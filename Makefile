@@ -1,17 +1,17 @@
 CXX=g++
-SOURCES=multiframe.cpp
+SOURCES=sample.cpp
 SOURCES+=xiApiPlusOcv.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-PROGRAM=multiframe
+PROGRAM=sample
 
 
 all: $(PROGRAM)
 
-$(PROGRAM): multiframe.o 
-	g++ $(OBJECTS) -o multiframe -L/usr/local/lib -lm3api -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
+$(PROGRAM): sample.o 
+	g++ $(OBJECTS) -o sample -L/usr/local/lib -lm3api -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
 
-xiApiPlusOcv.o: multiframe.cpp 
-	g++ -c multiframe.cpp -I . -I /usr/local/include/ -g3 -Wall -c -fmessage-length=0
+xiApiPlusOcv.o: sample.cpp 
+	g++ -c sample.cpp -I . -I /usr/local/include/ -g3 -Wall -c -fmessage-length=0
 	
 clean:
 	rm -f *.o *~ $(PROGRAM) $(OBJECTS)
