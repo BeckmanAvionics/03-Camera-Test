@@ -16,8 +16,4 @@ multiframe.o: $(SOURCES)
 clean:
 	rm -f *.o *~ $(PROGRAM) $(OBJECTS)
 
-
-
-
-
-
+.PHONY clean
