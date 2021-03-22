@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
 			char* filename = const_cast<char*>(s_filename.c_str())
 			// char* filename = &get_filename(EXPOSURE, 100);
 			if (keyboard_input == 32) {
-				cv::imwrite(std::string(filename), cv_mat_image);
+				cv::imwrite(filename, cv_mat_image);
 				printf("image saved under: " + &filename);
 			} 
 			// printf("\t%d\n",cv_mat_image.at<unsigned char>(0,0));
