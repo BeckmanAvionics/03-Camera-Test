@@ -58,11 +58,13 @@ int main(int argc, char* argv[])
 			Mat cv_mat_image = cam.GetNextImageOcvMat();
 			if (format == XI_RAW16 || format == XI_MONO16) // This may be able to be modified to get color images/different pixel values
 				normalize(cv_mat_image, cv_mat_image, 0, 65536, NORM_MINMAX, -1, Mat()); // 0 - 65536, 16 bit unsigned integer range
-			cv::imshow("Image from camera",cv_mat_image);
+			cv::imshow("Image from camera", cv_mat_image);
 			
 			// cvWaitKey(20);
 			int keyboard_input = cv::waitKey(20);
-			char* filename = &get_filename(EXPOSURE, 100);
+			string s_filename = get_filename(EXPOSURE, 100);
+			char* filename = const_cast<char*>(s_filename.c_str())
+			// char* filename = &get_filename(EXPOSURE, 100);
 			if (keyboard_input == 32) {
 				cv::imwrite(std::string(filename), cv_mat_image);
 				printf("image saved under: " + &filename);
