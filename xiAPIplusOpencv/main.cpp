@@ -19,6 +19,7 @@
 #include <string>
 #include <time.h>
 #include <xiApiPlusOcv.hpp>
+#include <sstream>
 
 #define EXPECTED_IMAGES 500
 #define EXPOSURE 20000
@@ -30,6 +31,13 @@ using namespace std;
 
 string get_string_time();
 string get_filename(int exposure, int gain);
+
+template <typename T>
+std::string to_string(const T& value) {
+    std::stringstream ss;
+    ss << value;
+    return ss.str();
+}
 
 int main(int argc, char* argv[])
 {
@@ -63,10 +71,10 @@ int main(int argc, char* argv[])
 			// cvWaitKey(20);
 			int keyboard_input = cv::waitKey(20);
 			string s_filename = get_filename(EXPOSURE, 100);
-			char* filename = const_cast<char*>(s_filename.c_str())
+			const char* filename = const_cast<char*>(s_filename.c_str())
 			// char* filename = &get_filename(EXPOSURE, 100);
 			if (keyboard_input == 32) {
-				cv::imwrite(filename, cv_mat_image);
+				cv::imwrite(std::string(filename), cv_mat_image);
 				printf("image saved under: " + &filename);
 			} 
 			// printf("\t%d\n",cv_mat_image.at<unsigned char>(0,0));
@@ -114,6 +122,7 @@ string get_string_time()
 string get_filename(int exposure, int gain)
 {
     string filename;
-    filename += get_formmated_time() + "_exposure-" + to_string(exposure) + "_gain-" + to_string(gain);
+    filename += get_string_time() + "_exposure-" + to_string(exposure) + "_gain-" + to_string(gain);
     return filename;
 }
+
