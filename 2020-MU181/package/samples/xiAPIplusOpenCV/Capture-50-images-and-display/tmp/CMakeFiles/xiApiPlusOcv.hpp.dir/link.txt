@@ -1,0 +1,2 @@
+/usr/bin/ar qc libxiApiPlusOcv.hpp.a  CMakeFiles/xiApiPlusOcv.hpp.dir/xiApiPlusOcv.cpp.o
+/usr/bin/ranlib libxiApiPlusOcv.hpp.a
