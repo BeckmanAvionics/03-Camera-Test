@@ -1,4 +1,4 @@
-#include"xiApiPlusOcv.hpp"
+#include "xiApiPlusOcv.hpp"
 
 //-------------------------------------------------------------------------------------------------------------------
 // xiAPIplus parameters implementation file - created from gen_xiAPIplus_cpp_file.xslt
@@ -6226,7 +6226,7 @@
 		CheckResult(res,"SetLensFocusMove");
 	}
 	 
-	
+/*	
 	// Lens focus distance in cm. (XI_PRM_LENS_FOCUS_DISTANCE)
 	float xiAPIplus_Camera::GetLensFocusDistance()
 	{
@@ -6271,7 +6271,7 @@
 		CheckResult(res,"GetLensFocusDistance" "_Increment");
 		return val;
 	}
-	 
+*/	 
 	
 	// Lens focal distance in mm. (XI_PRM_LENS_FOCAL_LENGTH)
 	float xiAPIplus_Camera::GetLensFocalLength()
