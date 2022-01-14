@@ -90,7 +90,7 @@ int main(int argc, char* argv[])
 		Sleep(2000);
 #endif
 		cv::waitKey(2000);
-		printf("big sad it no work\n");
+		printf("Error \n");
 		return -1;
 	}
 	return 0;
