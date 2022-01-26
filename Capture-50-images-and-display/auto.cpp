@@ -63,8 +63,8 @@ int main(int argc, char* argv[])
 
 //			if (format == XI_RAW16 || format == XI_MONO16) {  // This may be able to be modified to get color images/different pixel values, doesn't work so commented out
 //				cv::normalize(cv_mat_image, cv_mat_image, 0, 65536, NORM_MINMAX, -1, Mat()); // 0 - 65536, 16 bit unsigned integer range, doesn't work so commented out
-			cv::namedWindow("Image from camera", 1000); // changes display window size
-			cv::imshow("Image from camera", cv_mat_image);
+//			cv::namedWindow("Image from camera", 1000); // changes display window size
+//			cv::imshow("Image from camera", cv_mat_image);
 			cv::imwrite("saved_auto/image.jpg", cv_mat_image);
 //			}  // for previous if
 			cv::imwrite("saved_auto/image" + get_filename(EXPOSURE, GAIN) + ".jpg", cv_mat_image);
