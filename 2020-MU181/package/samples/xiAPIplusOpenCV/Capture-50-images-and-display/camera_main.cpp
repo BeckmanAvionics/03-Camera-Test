@@ -14,8 +14,9 @@
 #include "xiApiPlusOcv.cpp"
 #include <sstream>
 
-#define EXPOSURE 350000 // 10000 units = 10 ms, around 350000 for night tests?
+#define EXPOSURE 35000 // 10000 units = 10 ms, around 350000 for night tests?
 #define GAIN 8.0 //in dB, between 0-10, more gain = more noise
+#define CROP 0 // turn on or off cropping 1 = crop and 0 = uncropped
 
 #define PST (-8)
 #define PDT (-7)
@@ -57,20 +58,31 @@ int main(int argc, char* argv[])
 		XI_IMG_FORMAT format = cam.GetImageDataFormat();
 
 		bool isRunning = true;
-		while (isRunning)
-		{
+		while (isRunning){
 			Mat cv_mat_image = cam.GetNextImageOcvMat();
 
 //			if (format == XI_RAW16 || format == XI_MONO16) {  // This may be able to be modified to get color images/different pixel values, doesn't work so commented out
 //				cv::normalize(cv_mat_image, cv_mat_image, 0, 65536, NORM_MINMAX, -1, Mat()); // 0 - 65536, 16 bit unsigned integer range, doesn't work so commented out
-				cv::namedWindow("Image from camera", 1000); // changes display window size
-				cv::imshow("Image from camera", cv_mat_image);
-				cv::imwrite("saved_image/image.jpg", cv_mat_image);
-//			}  // for previous if
+			cv::namedWindow("Image from camera", 1000); // changes display window size
+			cv::imshow("Image from camera", cv_mat_image);
+			cv::imwrite("saved_image/image.jpg", cv_mat_image);
 
-			if (cv::waitKey(10) == 32) {
-				cv::imwrite("saved_image/image" + get_filename(EXPOSURE, GAIN) + ".jpg", cv_mat_image);
-//				printf("image saved under: " + get_filename(EXPOSURE, 0)); //doesn't work, commented out
+			if (CROP == 1){
+				cv::Mat crop_image;			
+				cv::Rect crop_region(2256, 1640, 400, 400);
+				crop_image = cv_mat_image(crop_region);
+				cv::imshow("Cropped image", crop_image);
+				if (cv::waitKey(10) == 32) {
+					cv::imwrite("saved_image/cropped" + get_filename(EXPOSURE, GAIN) + ".jpg", crop_image);
+				}	
+			}
+//			}  // for previous
+
+			else {
+				if (cv::waitKey(10) == 32) {
+					cv::imwrite("saved_image/image" + get_filename(EXPOSURE, GAIN) + ".jpg", cv_mat_image);
+//					printf("image saved under: " + get_filename(EXPOSURE, 0)); //doesn't work, commented out
+				}
 			}
 		}
 
