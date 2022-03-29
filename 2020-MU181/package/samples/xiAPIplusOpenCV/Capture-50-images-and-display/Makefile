@@ -8,7 +8,6 @@ OBJECTS=$(SOURCES:.cpp=.o)
 PROGRAM=camera_main
 PROGRAM+=sample_img_test
 
-
 all: camera_main sample_img_test
 
 #all: $(PROGRAM)
@@ -28,13 +27,13 @@ camera_main: camera_main.o
 	g++ camera_main.cpp -o camera_main -L/usr/local/lib -lm3api -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
 
 camera_main.o: $(SOURCES) 
-	g++ -c camera_main.cpp -I . -I /usr/local/include/ -g3 -Wall -c -fmessage-length=0
+	g++ -c camera_main.cpp -I ./ -I /usr/local/include -g3 -Wall -c -fmessage-length=0
 
 sample_img_test: sample_img_test.o
 	g++ sample_img_test.cpp -o sample_img_test -L/usr/local/lib -lm3api -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
 	
 sample_img_test.o: $(SOURCES)
-	g++ -c sample_img_test.cpp -I . -I /usr/local/include/ -g3 -Wall -c -fmessage-length=0
+	g++ -c sample_img_test.cpp -I ./ -I /usr/local/include -g3 -Wall -c -fmessage-length=0 -opencv4
 
 
 clean:

@@ -162,7 +162,7 @@ typedef enum
 //#include <xiExt.h>
 
 #include <stdio.h>
-#include <opencv2/core.hpp> 
+#include <opencv2/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <stdint.h>
 

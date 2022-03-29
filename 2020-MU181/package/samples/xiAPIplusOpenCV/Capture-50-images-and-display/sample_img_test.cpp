@@ -11,7 +11,7 @@ using namespace cv;
 	if (argc != 2 || !image.data) {
 		printf("No image data \n");
 		return -1;
-	}/
+	}
 	dst = image.clone();
 
 	for (int i = 1; i < 31; i = i + 2){
