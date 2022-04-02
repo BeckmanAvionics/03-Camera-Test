@@ -14,8 +14,8 @@
 #include "xiApiPlusOcv.cpp"
 #include <sstream>
 
-#define EXPOSURE 35000 // 10000 units = 10 ms, around 350000 for night tests?
-#define GAIN 8.0 //in dB, between 0-10, more gain = more noise
+#define EXPOSURE 895000 // 10000 units = 10 ms, around 350000 for night tests?
+#define GAIN 10 //in dB, between 0-10, more gain = more noise
 #define CROP 0 // turn on or off cropping 1 = crop and 0 = uncropped
 
 #define PST (-8)
